@@ -1,0 +1,94 @@
+*{
+    margin: 0;
+    padding: 0;
+    font-family: Roboto, sans-serif;
+}
+
+body{
+    height: 100vh;
+    display: grid;
+    grid-template-rows: 150px 1fr;
+}
+
+.header{
+    background-color: blue;
+    box-shadow: 0 5px 10px -2px rgba(0, 0, 0, 0.5);
+    position: relative;
+    z-index: 9;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0px 30px;
+    font-weight: 700;
+}
+
+.new-book{
+    display: flex;
+    width: 30%;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.form-div{
+    background-color: white;
+    padding: 5px 10px 10px 10px;
+    border-radius: 5px;
+    height: 70%;
+    display: none;
+}
+
+.form-div > button{
+
+    border: none;
+    background-color: lightgray;
+    border-radius: 5px;
+    width: 20px;
+}
+
+.bookForm{
+    display: flex;
+    flex-direction: column;
+    justify-self: end;
+    font-size: 10px;
+}
+
+.add-button{
+    border: none;
+    background-color: white;
+    width: 150px;
+    height: 60px;
+    border-radius: 40px;
+}
+.add-button:hover {
+    background-color: lightgray;
+    color: white;
+  }
+
+
+.main-content{
+    background-color: lightgray;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+}
+
+.shelf{
+    width: 100%;
+    height: 100%;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    grid-template-rows: repeat(auto-fit, minmax(100px, 150px));
+}
+
+.book{
+    background-color: white;
+    border-radius: 5px;
+    padding: 10px 20px;
+    margin: 10px;
+}
+
+.book > p{
+    font-style: italic;
+    margin-top: 10px;
+}
+
