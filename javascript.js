@@ -1,11 +1,11 @@
 const myLibrary = [];
 
-function Book(title, author, pages) {
+function Book(title, author, pages, isRead) {
 
   this.title = title;
   this.author = author;
   this.pages = pages;
-
+  this.isRead = isRead;
 }
 
 function addBookToLibrary(givenBook) {
@@ -24,7 +24,15 @@ function addBookToLibrary(givenBook) {
     deleteBookButton.dataset.index = myLibrary.length;
     deleteBookButton.addEventListener('click', () =>{
         myLibrary.splice(deleteBookButton.dataset.index, 1);
-        deleteBookButton.parentElement.remove();
+        newBook.remove();
+    });
+
+    const readBookButton = document.createElement('button');
+    readBookButton.classList.add('book-isread');
+    readBookButton.textContent = "V";
+    readBookButton.dataset.index = myLibrary.length;
+    readBookButton.addEventListener('click', () =>{
+        ToggleBookStatus(newBook, readBookButton.dataset.index);
     });
 
 
@@ -37,9 +45,21 @@ function addBookToLibrary(givenBook) {
     newBook.appendChild(bookAuthor);
     newBook.appendChild(bookPages);
     newBook.appendChild(deleteBookButton);
+    newBook.appendChild(readBookButton);
 
     shelf.appendChild(newBook);
     myLibrary.push(newBook);
+}
+
+function ToggleBookStatus(bookElement, bookIndex){
+    if(!myLibrary[bookIndex].isRead){
+        myLibrary[bookIndex].isRead = true;
+        bookElement.classList.add('isRead');
+    }
+    else{
+        myLibrary[bookIndex].isRead = false;
+        bookElement.classList.remove('isRead');
+    }
 }
 
 
@@ -64,7 +84,7 @@ addBookButton.addEventListener('click', () => {
         
     if(!ValidateInputCamps()) return;
 
-    const newBook = new Book(titleValue.value, authorValue.value, pagesValue.value);
+    const newBook = new Book(titleValue.value, authorValue.value, pagesValue.value, false);
     addBookToLibrary(newBook);
     ClearInputValues();
     HideNewBookPanel();
