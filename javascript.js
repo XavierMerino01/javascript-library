@@ -11,27 +11,33 @@ function Book(title, author, pages) {
 function addBookToLibrary(givenBook) {
 
     const shelf = document.querySelector('.shelf');
-
-    // Create a new div for the book
     const newBook = document.createElement('div');
     newBook.classList.add('book');
 
-    // Create elements for the book's title, author, and pages
     const bookTitle = document.createElement('h4');
     const bookAuthor = document.createElement('p');
     const bookPages = document.createElement('p');
 
-    // Assign the passed-in values to the text content of the elements
+    const deleteBookButton = document.createElement('button');
+    deleteBookButton.classList.add('delete-book');
+    deleteBookButton.textContent = "X";
+    deleteBookButton.dataset.index = myLibrary.length;
+    deleteBookButton.addEventListener('click', () =>{
+        myLibrary.splice(deleteBookButton.dataset.index, 1);
+        deleteBookButton.parentElement.remove();
+    });
+
+
     bookTitle.textContent = givenBook.title;
     bookAuthor.textContent = givenBook.author;
     bookPages.textContent = `Pages: ${givenBook.pages}`;
 
-    // Append the elements to the newBook div
+
     newBook.appendChild(bookTitle);
     newBook.appendChild(bookAuthor);
     newBook.appendChild(bookPages);
+    newBook.appendChild(deleteBookButton);
 
-    // Append the new book div to the shelf
     shelf.appendChild(newBook);
     myLibrary.push(newBook);
 }

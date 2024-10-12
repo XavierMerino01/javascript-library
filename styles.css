@@ -26,7 +26,8 @@ body{
     display: flex;
     width: 30%;
     align-items: center;
-    justify-content: space-between;
+    justify-content: center;
+    gap: 20px;
 }
 
 .form-div{
@@ -37,12 +38,13 @@ body{
     display: none;
 }
 
-.form-div > button{
+.add-newbook{
 
     border: none;
     background-color: lightgray;
     border-radius: 5px;
     width: 20px;
+    height: 16px;
 }
 
 .bookForm{
@@ -83,12 +85,25 @@ body{
 .book{
     background-color: white;
     border-radius: 5px;
-    padding: 10px 20px;
+    padding: 15px 20px;
     margin: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
 .book > p{
     font-style: italic;
     margin-top: 10px;
 }
+
+.delete-book{
+    border: none;
+    background-color: red;
+    border-radius: 10px;
+    margin-top: 5px;
+    width: 20px;
+    height: 20px;
+}
+
 
