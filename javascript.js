@@ -17,6 +17,7 @@ function addBookToLibrary(givenBook) {
     const bookTitle = document.createElement('h4');
     const bookAuthor = document.createElement('p');
     const bookPages = document.createElement('p');
+    const buttonsDiv = document.createElement('div');
 
     const deleteBookButton = document.createElement('button');
     deleteBookButton.classList.add('delete-book');
@@ -29,11 +30,15 @@ function addBookToLibrary(givenBook) {
 
     const readBookButton = document.createElement('button');
     readBookButton.classList.add('book-isread');
-    readBookButton.textContent = "V";
+    readBookButton.textContent = "Read";
     readBookButton.dataset.index = myLibrary.length;
     readBookButton.addEventListener('click', () =>{
-        ToggleBookStatus(newBook, readBookButton.dataset.index);
+        ToggleBookStatus(readBookButton, newBook, readBookButton.dataset.index);
     });
+
+    buttonsDiv.appendChild(deleteBookButton);
+    buttonsDiv.appendChild(readBookButton);
+    buttonsDiv.style.display = "flex";
 
 
     bookTitle.textContent = givenBook.title;
@@ -44,21 +49,22 @@ function addBookToLibrary(givenBook) {
     newBook.appendChild(bookTitle);
     newBook.appendChild(bookAuthor);
     newBook.appendChild(bookPages);
-    newBook.appendChild(deleteBookButton);
-    newBook.appendChild(readBookButton);
+    newBook.appendChild(buttonsDiv);
 
     shelf.appendChild(newBook);
     myLibrary.push(newBook);
 }
 
-function ToggleBookStatus(bookElement, bookIndex){
+function ToggleBookStatus(buttonRef, bookElement, bookIndex){
     if(!myLibrary[bookIndex].isRead){
         myLibrary[bookIndex].isRead = true;
         bookElement.classList.add('isRead');
+        buttonRef.textContent = "Not Read";
     }
     else{
         myLibrary[bookIndex].isRead = false;
         bookElement.classList.remove('isRead');
+        buttonRef.textContent = "Read";
     }
 }
 

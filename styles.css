@@ -61,7 +61,8 @@ body{
     height: 60px;
     border-radius: 40px;
 }
-.add-button:hover {
+.add-button:hover,
+.book-isread:hover {
     background-color: lightgray;
     color: white;
   }
@@ -105,13 +106,17 @@ body{
     width: 20px;
     height: 20px;
 }
+.delete-book:hover{
+    background-color: pink;
+}
 
 .book-isread{
     border: none;
-    background-color: lightgray;
+    background-color: white;
     border-radius: 10px;
     margin-top: 5px;
-    width: 20px;
+    margin-left: 5px;
+    width: 70px;
     height: 20px;
 }
 
