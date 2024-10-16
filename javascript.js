@@ -78,7 +78,7 @@ const pagesValue = document.querySelector('#pages');
 const addBookButton = document.querySelector('.add-newbook');
 
 newBookButton.addEventListener('click', () => {
-    if (formDiv.style.display === "none") {
+    if (formDiv.style.display === "none" || formDiv.style.display === "") {
         formDiv.style.display = "block";
         newBookButton.textContent = "Cancel";
     } else {
